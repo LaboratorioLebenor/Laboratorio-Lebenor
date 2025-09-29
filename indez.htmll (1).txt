@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios Lebenor - Flexoral Plus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #1e5c83;
+            --color-secondary: #30916e;
+            --color-accent: #e36d25;
+            --color-light: #f8f9fa;
+            --color-dark: #333;
+            --color-text: #444;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .hero-bg {
+            position: relative;
+            height: 96vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -2;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        .product-img {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-radius: 12px;
+        }
+        
+        .product-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .benefit-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-img {
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-img {
+            transform: scale(1.1);
+        }
+        
+        .floating-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--color-secondary);
+            color: white;
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .footer-title {
+            position: relative;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--color-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+            
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+            
+            .hero-bg {
+                height: 70vh;
+                min-height: 500px;
+            }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header Top -->
+    <div class="bg-primary text-white py-2 text-sm">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+                <a href="tel:+573001234567" class="text-white hover:text-secondary flex items-center gap-1">
+                    <i class="fas fa-phone"></i> +57 300 123 4567
+                </a>
+                <a href="mailto:info@lebenor.com" class="text-white hover:text-secondary flex items-center gap-1">
+                    <i class="fas fa-envelope"></i> info@lebenor.com
+                </a>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="text-white hover:text-secondary flex items-center gap-1">
+                    <i class="fas fa-user"></i> Mi Cuenta
+                </a>
+                <a href="#" class="text-white hover:text-secondary flex items-center gap-1">
+                    <i class="fas fa-shopping-cart"></i> Carrito
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center relative">
+        <div class="flex items-center">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/l4r9oi4uiqutc4v5ieroe/Logos-9.png?rlkey=wkqurbkhm290qqcn04x79glpy&st=65xupam0" alt="Logo Laboratorios Lebenor Izquierda" class="h-12">
+        </div>
+
+        <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/hpxsvrapk23s6q5e9jf1j/Logos-10.png?rlkey=0pbi0kizri0z4evdf850y09dq&st=g9jtxmcg" alt="Logo Centrado" class="h-12 pointer-events-auto">
+        </div>
+
+        <div class="flex items-center">
+            <button class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            </div>
+    </div>
+</header>
+            
+<header class="bg-white shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div>
+            <a href="#" class="text-2xl font-bold text-dark"></a>
+        </div>
+
+        <div>
+            <button id="hamburger-button" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <nav id="main-menu" class="hidden absolute top-20 left-0 w-full bg-white shadow-md md:block md:static md:w-auto md:shadow-none">
+                <ul class="flex flex-col p-4 space-y-2 md:flex-row md:space-y-0 md:space-x-1 md:p-0">
+                    <li><a href="#" class="block px-4 py-2 rounded-md text-dark hover:bg-secondary hover:text-white">Home</a></li>
+                    <li><a href="#" class="block px-4 py-2 rounded-md text-dark hover:bg-secondary hover:text-white">Promociones</a></li>
+                    <li><a href="#" class="block px-4 py-2 rounded-md text-dark hover:bg-secondary hover:text-white">Productos</a></li>
+                    <li><a href="#" class="block px-4 py-2 rounded-md text-dark hover:bg-secondary hover:text-white">Blog</a></li>
+                    <li><a href="#" class="block px-4 py-2 rounded-md text-dark hover:bg-secondary hover:text-white">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-24 left-0 w-4/5 h-screen bg-white shadow-lg z-40 md:hidden" id="mobileMenu">
+            <ul class="flex flex-col p-4 space-y-2">
+                <li><a href="#" class="block px-4 py-3 rounded-md text-dark hover:bg-secondary hover:text-white">Home</a></li>
+                <li><a href="#" class="block px-4 py-3 rounded-md text-dark hover:bg-secondary hover:text-white">Promociones</a></li>
+                <li><a href="#" class="block px-4 py-3 rounded-md text-dark hover:bg-secondary hover:text-white">Productos</a></li> 
+                <li><a href=a></li>
+                <li><a href="#" class="block px-4 py-3 rounded-md text-dark hover:bg-secondary hover:text-white">Blog</a></li>
+                <li><a href="#" class="block px-4 py-3 rounded-md text-dark hover:bg-secondary hover:text-white">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Hero Section with Video -->
+    <section class="hero-bg">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://dl.dropboxusercontent.com/scl/fi/d6h7bs4s7t40qthoqx8h8/Logos.mp4?rlkey=o7uj05vul6l5gguq42nrv51rl&st=ja5uon1d" type="video/mp4">
+            Su navegador no soporta el elemento de video.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10" data-aos="fade-up">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/8ln99xowtqce6pfi8l41f/Logos-7.png?rlkey=uudsay1g4q619b580kreerrya&st=d3pawuar" class="mx-auto mb-6 h-">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-shadow"></h2>
+            <h3 class="text-2xl md:text-4xl mb-6 text-shadow"></h3>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-shadow">Alivio natural para el dolor de las articulaciones</p>
+            <a href="#producto" class="btn-primary inline-block text-white font-semibold px-8 py-3 rounded-full uppercase tracking-wider shadow-lg">Conoce más</a>
+        </div>
+    </section>
+    
+    <!-- Featured Product -->
+    <section id="producto" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/qk1bbbck7wc416hqqhih5/Logos-4.png?rlkey=oujeaogewqbak9ilz03us0e7y&st=mrxtjhra" alt="Flexoral Plus" class="product-img w-full max-w-md mx-auto">
+                </div>
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">FLEXORAL PLUS</h2>
+                    <h3 class="text-2xl text-secondary mb-6">Medicamento Homeopático</h3>
+                    <p class="mb-4">Flexoral Plus es un producto 100% natural formulado específicamente para aliviar el dolor y la inflamación de las articulaciones. Nuestra fórmula homeopática avanzada ofrece un enfoque integral para mejorar la movilidad y la calidad de vida.</p>
+                    <p class="mb-6">Elaborado con ingredientes naturales seleccionados cuidadosamente, Flexoral Plus es la solución ideal para aquellos que buscan alivio sin los efectos secundarios de los medicamentos convencionales.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="btn-primary inline-block text-white font-semibold px-8 py-3 rounded-full uppercase tracking-wider shadow-lg">Comprar ahora</a>
+                        <a href="#beneficios" class="inline-block border-2 border-secondary text-secondary font-semibold px-8 py-3 rounded-full uppercase tracking-wider transition-all hover:bg-secondary hover:text-white">Ver beneficios</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section id="beneficios" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Beneficios de Flexoral Plus</h2>
+                <p class="text-lg max-w-2xl mx-auto">Descubre por qué Flexoral Plus es la elección preferida para el cuidado articular natural</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="benefit-card bg-gray-50 p-8 rounded-lg text-center shadow-md" data-aos="zoom-in">
+                    <div class="text-5xl text-secondary mb-4">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">100% Natural</h3>
+                    <p>Formulado con ingredientes naturales que trabajan en armonía con tu cuerpo.</p>
+                </div>
+                
+                <div class="benefit-card bg-gray-50 p-8 rounded-lg text-center shadow-md" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-5xl text-secondary mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Sin Efectos Secundarios</h3>
+                    <p>Alivia el dolor sin los efectos adversos de los medicamentos convencionales.</p>
+                </div>
+                
+                <div class="benefit-card bg-gray-50 p-8 rounded-lg text-center shadow-md" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-5xl text-secondary mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Protección Articular</h3>
+                    <p>Fortalece y protege tus articulaciones para una movilidad mejorada.</p>
+                </div>
+                
+                <div class="benefit-card bg-gray-50 p-8 rounded-lg text-center shadow-md" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-5xl text-secondary mb-4">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Fórmula Avanzada</h3>
+                    <p>Desarrollado con tecnología homeopática de vanguardia para máxima efectividad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How to Use Section -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">¿Cómo usar Flexoral Plus?</h2>
+                <p class="text-lg max-w-2xl mx-auto">Sigue estas simples instrucciones para obtener los mejores resultados</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up">
+                    <div class="text-4xl text-secondary font-bold mb-4">1</div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Dosificación</h3>
+                    <p>Tomar 10 gotas debajo de la lengua 3 veces al día, preferiblemente antes de las comidas.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl text-secondary font-bold mb-4">2</div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Administración</h3>
+                    <p>Mantener las gotas en la boca por 30 segundos antes de tragar para una mejor absorción.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl text-secondary font-bold mb-4">3</div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Duración</h3>
+                    <p>Usar continuamente por 3 meses para obtener resultados óptimos. Consultar con su médico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Testimonios</h2>
+                <p class="text-lg max-w-2xl mx-auto">Lo que nuestros clientes dicen sobre Flexoral Plus</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <div class="text-secondary text-2xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Después de años de sufrir dolor articular, Flexoral Plus ha sido un milagro. Puedo volver a hacer mis caminatas matutinas sin dolor."</p>
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-primary">María González</h4>
+                            <p class="text-sm text-gray-500">Bogotá, 65 años</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-secondary text-2xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Como deportista, mis articulaciones sufren mucho. Flexoral Plus me ha ayudado a recuperarme más rápido y a entrenar sin molestias."</p>
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-primary">Carlos Rodríguez</h4>
+                            <p class="text-sm text-gray-500">Medellín, 42 años</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-secondary text-2xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Me encanta que es natural y no tengo que preocuparme por efectos secundarios. He recomendado Flexoral Plus a todos mis amigos."</p>
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-primary">Ana Martínez</h4>
+                            <p class="text-sm text-gray-500">Cali, 58 años</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- News & Promo Section -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Noticias y Promociones</h2>
+                <p class="text-lg max-w-2xl mx-auto">Mantente informado sobre nuestras últimas novedades y ofertas especiales</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Promoción" class="news-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="text-secondary text-sm mb-2">15 Julio 2023</div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Oferta Especial de Verano</h3>
+                        <p class="mb-4">Aprovecha nuestro 20% de descuento en toda la línea de productos Flexoral durante este mes.</p>
+                        <a href="#" class="text-secondary font-semibold flex items-center">Leer más <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Novedad" class="news-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="text-secondary text-sm mb-2">28 Junio 2023</div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Nuevo Estudio Clínico</h3>
+                        <p class="mb-4">Resultados positivos en el último estudio sobre la efectividad de Flexoral Plus en pacientes con artritis.</p>
+                        <a href="#" class="text-secondary font-semibold flex items-center">Leer más <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Consejo" class="news-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="text-secondary text-sm mb-2">5 Junio 2023</div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Consejos para Articulaciones Sanas</h3>
+                        <p class="mb-4">Descubre nuestros 10 consejos para mantener tus articulaciones saludables naturalmente.</p>
+                        <a href="#" class="text-secondary font-semibold flex items-center">Leer más <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Natural Section -->
+    <section class="py-16 bg-gradient-to-r from-green-50 to-blue-50">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-6">Armonía Vital con la Naturaleza</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-8">En Laboratorios Lebenor, creemos en el poder curativo de la naturaleza. Nuestros productos están diseñados para trabajar en armonía con tu cuerpo, respetando sus procesos naturales y promoviendo la salud integral.</p>
+            <a href="#" class="btn-primary inline-block text-white font-semibold px-8 py-3 rounded-full uppercase tracking-wider shadow-lg">Conoce nuestra filosofía</a>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Preguntas Frecuentes</h2>
+                <p class="text-lg max-w-2xl mx-auto">Resolvemos tus dudas sobre Flexoral Plus</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-primary mb-2">¿Flexoral Plus tiene efectos secundarios?</h3>
+                    <p class="text-gray-600">No, Flexoral Plus está formulado con ingredientes 100% naturales y no produce los efectos secundarios asociados con los medicamentos convencionales para el dolor articular.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-primary mb-2">¿En cuánto tiempo veré resultados?</h3>
+                    <p class="text-gray-600">La mayoría de nuestros usuarios reportan mejorías notables después de 2-3 semanas de uso continuo. Para resultados óptimos, recomendamos un tratamiento de 3 meses.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold text-primary mb-2">¿Puedo usar Flexoral Plus si tomo otros medicamentos?</h3>
+                    <p class="text-gray-600">Sí, al ser un producto natural, Flexoral Plus no interfiere con otros medicamentos. Sin embargo, siempre recomendamos consultar con su médico antes de comenzar cualquier nuevo tratamiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary text-black">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">¿Listo para vivir sin dolor articular?</h2>
+            <p class="text-lg max-w-2xl mx-auto mb-8">Obtén Flexoral Plus hoy mismo y comienza tu camino hacia una vida más activa y sin dolor</p>
+            <a href="#" class="inline-block bg-white text-primary font-semibold px-8 py-3 rounded-full uppercase tracking-wider transition-all transform hover:-translate-y-1 shadow-lg hover:bg-secondary hover:text-white">Comprar ahora</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+<footer class="bg-primary text-black pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+                <h3 class="text-xl font-bold mb-6 relative pb-2 footer-title">Laboratorios Lebenor</h3>
+                <p class="mb-4">Comprometidos con tu salud y bienestar a través de medicamentos homeopáticos de la más alta calidad.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-secondary transition-all">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-secondary transition-all">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-secondary transition-all">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-secondary transition-all">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-6 relative pb-2 footer-title">Categorías</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-900 hover:text-secondary transition-all">Homeopáticos</a></li>
+                    <li><a href="#" class="text-gray-900 hover:text-secondary transition-all">Salud y Belleza</a></li>
+                    <li><a href="#" class="text-gray-900 hover:text-secondary transition-all">Suplementos Dietéticos</a></li>
+                    <li><a href="#" class="text-gray-900 hover:text-secondary transition-all">Alimentos</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-6 relative pb-2 footer-title">Políticas</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-900 hover:text-secondary transition-all">Políticas de Venta y Entrega</a></li>
+                    <li><a href="#" class="text-gray-900 hover:text-secondary transition-all">Política de Privacidad</a></li>
+                    <li><a href="#" class="text-gray-900 hover:text-secondary transition-all">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-6 relative pb-2 footer-title">Contacto</h3>
+                <div class="space-y-3">
+                    <p class="flex items-start gap-2">
+                        <i class="fas fa-map-marker-alt mt-1"></i> Cra 45 # 72-15, Bogotá
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fas fa-phone"></i> +57 300 123 4567
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fas fa-envelope"></i> info@lebenor.com
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pt-8 border-t border-white border-opacity-10 text-center">
+            <p>&copy; 2023 Laboratorios Lebenor. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Botones flotantes -->
+    <div class="fixed right-6 bottom-6 z-50 flex flex-col space-y-4">
+        <a href="https://wa.me/573001234567" class="floating-btn w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl shadow-lg bg-green-500 hover:bg-green-600">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="floating-btn w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl shadow-lg bg-accent hover:bg-orange-600">
+            <i class="fas fa-calendar-alt"></i>
+        </a>
+        <a href="#" class="floating-btn w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl shadow-lg bg-primary hover:bg-blue-700">
+            <i class="fas fa-credit-card"></i>
+        </a>
+    </div>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on links
+            const navLinks = document.querySelectorAll('#mobileMenu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target) && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // Feather icons
+        feather.replace();
+    </script>
+</body>
+</html>
